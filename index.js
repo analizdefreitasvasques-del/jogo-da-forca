@@ -13,6 +13,8 @@ const palavras =["BACKEND", "NODEJS", "JAVASCRIPT","EXPRESS", "SERVIDOR", "TERMI
  let letrasDesobertas = Array(palavraSecreta.length).fill ("_");
  let jogoRodando = true;
 
+ let vidas = 6;
+
  console.log ("=== Bem-Vindo ao Jogo da Forca===");
 
  while (jogoRodando){
@@ -30,10 +32,16 @@ const palavras =["BACKEND", "NODEJS", "JAVASCRIPT","EXPRESS", "SERVIDOR", "TERMI
 
   if (!acertou) {
     console.log ("[X] Letra incorreta");
+    vidas--;
   }
 if (!letrasDesobertas.includes ("_")){
     console.log(`\n[VITORIA] Parabens! Você descobriu  palavra: ${palavraSecreta}`);
     jogoRodando = false
+}
+
+if (vidas === 0){
+  console.log (`\n [FIM DE JOGO] a palavra correta era: ${palavraSecreta}`);
+  jogoRogando = false
 }
 
  } rl.close();
