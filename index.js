@@ -17,10 +17,19 @@ const palavras =[
  const palavraSecreta = palavras[indiceAleatorio].palavra;
  const dica = palavras [indiceAleatorio].dica;
 
- let letrasDesobertas = Array(palavraSecreta.length).fill ("_");
+ let letrasDescobertas = Array(palavraSecreta.length).fill ("_");
  let jogoRodando = true;
 
  let vidas = 6;
+const arteForca = [
+    " +---+\n | |\n O |\n /|\\ |\n / \\ |\n ", // 0 vidas
+    " +---+\n | |\n O |\n /|\\ |\n /  |\n ", // 1 vida
+    " +---+\n | |\n O |\n /|\\ |\n   |\n ", // 2 vidas
+    " +---+\n | |\n O |\n /| |\n  |\n ", // 3 vidas
+    " +---+\n | |\n O |\n | |\n  |\n ", // 4 vidas
+    " +---+\n | |\n O |\n   |\n  |\n ", // 5 vidas
+    " +---+\n | |\n   |\n  |\n  |\n " // 6 vidas
+];
 
  console.log ("=== Bem-Vindo ao Jogo da Forca===");
 
@@ -33,7 +42,7 @@ const palavras =[
    
   for (let i = 0; i< palavraSecreta.length; i++){
     if(palavraSecreta [i] === chute){
-    letrasDesobertas[i] = chute;
+    letrasDescobertas[i] = chute;
     acertou = true;
    }
   }
@@ -42,8 +51,10 @@ const palavras =[
     console.log ("[X] Letra incorreta");
     vidas--;
   }
-if (!letrasDesobertas.includes ("_")){
-    console.log(`\n[VITORIA] Parabens! Você descobriu  palavra: ${palavraSecreta}`);
+if (!letrasDescobertas.includes ("_")){
+    let pontuacaoFinal = (vidas * 10) + 50;
+    console.log(`\n[VITORIA] Parabéns! Você descobriu  palavra: ${palavraSecreta}`);
+    console.log(`\n[PONTUAÇÃO] Sua pontuação final foi: ${pontuacaoFinal} pontos`);
     jogoRodando = false
 }
 
